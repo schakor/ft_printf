@@ -6,7 +6,7 @@
 #    By: schakor <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/14 17:56:43 by schakor           #+#    #+#              #
-#    Updated: 2018/10/16 15:20:34 by schakor          ###   ########.fr        #
+#    Updated: 2018/10/29 22:05:34 by schakor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -110,13 +110,15 @@ all : $(NAME)
 $(NAME) : $(OBJS)  | $(OBJ_PATH)
 	ar rc $@ $^
 
-$(OBJ_PATH)/%.o : $(SRC_PATH)/%.c
-	@mkdir -p $(OBJ_PATH)
-	@mkdir -p $(dir $(OBJS))
+$(OBJ_PATH)/%.o : $(SRC_PATH)/%.c | $(OBJ_PATH)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
+$(OBJ_PATH) :
+	@mkdir -p $(OBJ_PATH)
+	@mkdir -p $(dir $(OBJS))
+
 clean :
-	rm -rf $(OBJS) 2> /dev/null || true
+	rm -rf $(OBJ_PATH) 2> /dev/null || true
 
 fclean : clean
 	rm -rf $(NAME)
