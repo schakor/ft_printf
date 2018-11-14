@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 17:13:19 by schakor           #+#    #+#             */
-/*   Updated: 2018/10/29 18:39:18 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/14 11:32:29 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include "../libft/includes/libft.h"
+# include <stdio.h>
 
 typedef signed char			t_int8;
 typedef signed short		t_int16;
@@ -33,20 +34,49 @@ typedef unsigned long long	t_uint64;
 # define FLAG_ZERO			0x4
 # define FLAG_SPACE			0x8
 # define FLAG_HASH			0x10
+# define MODIF_HH			0x16
+# define MODIF_H			0x32
+# define MODIF_LL			0x64
+# define MODIF_L			0x80
+
 # define BUFFSIZE			2048
+
+enum
+{
+	c = 0,
+	s,
+	p,
+	d,
+	i,
+	o,
+	u,
+	x,
+	X,
+};
+
+typedef struct	s_conv
+{
+	t_uint8		flag_mod;
+	t_uint64	width;
+	t_uint64	prec;
+	t_uint8		conv;
+}				t_conv;
 
 typedef struct	s_pf
 {
-	t_uint8		flags;
-	int			ret;
-	char		*fmt;
 	char		*buf;
+	char		*conv_buf;
+	int			buf_i;
 	int			bufsztot;
+	int			convsize;
+	char		*fmt;
+	char		*percent;
 }				t_pf;
 
 int				ft_printf(const char *format, ...);
-void			init_pf(t_pf *pf, const char *format);
-void			insert_buffer(t_pf *pf, char *add, int size);
+void			insert_buffer(t_pf *pf, char *ins, int size);
 void			increase_buffer(t_pf *pf);
 void			destroy_pf(t_pf *pf);
+void			parser_percent(t_pf *pf, t_conv *conv);
+
 #endif

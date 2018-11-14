@@ -6,7 +6,7 @@
 #    By: schakor <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/14 17:56:43 by schakor           #+#    #+#              #
-#    Updated: 2018/10/29 22:05:34 by schakor          ###   ########.fr        #
+#    Updated: 2018/11/13 16:13:46 by schakor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,8 @@ SRC_FILES	=	array/ft_arrdup.c\
 				type/ft_isdigit.c\
 				type/ft_islower.c\
 				type/ft_isquote.c\
-				type/ft_strtolower.c
+				type/ft_strtolower.c\
+				type/ft_isflagpf.c\
 
 OBJ_FILES	=	$(SRC_FILES:.c=.o)
 

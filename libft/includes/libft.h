@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 18:00:32 by schakor           #+#    #+#             */
-/*   Updated: 2018/10/15 16:33:31 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/13 16:12:32 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int					ft_islower(int c);
 char				*ft_strtolower(char *str);
 int					ft_isquote(int c);
 int					ft_isescaped(char *s, int index);
+int					ft_isflagpf(int c);
 
 /*
 **		OUTPUT FUNCTIONS

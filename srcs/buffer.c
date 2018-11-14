@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 18:25:12 by schakor           #+#    #+#             */
-/*   Updated: 2018/10/29 18:33:32 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/13 13:19:02 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,17 @@ void		increase_buffer(t_pf *pf)
 		exit(EXIT_FAILURE);
 	}
 	ft_memset(ret, '\0', pf->bufsztot + BUFFSIZE);
-	ft_memcpy(ret, pf->buf, pf->ret);
+	if (pf->buf)
+		ft_memcpy(ret, pf->buf, pf->buf_i);
 	ft_strdel(&(pf->buf));
 	pf->buf = ret;
 	pf->bufsztot += BUFFSIZE;
 }
 
-void		insert_buffer(t_pf *pf, char *add, int size)
+void		insert_buffer(t_pf *pf, char *ins, int size)
 {
-	if (pf->ret + size >= pf->bufsztot)
+	if (pf->buf_i + size >= pf->bufsztot)
 		increase_buffer(pf);
-	ft_memcpy(pf->buf + pf->ret, add, size);
-	pf->ret += size;
+	ft_memcpy(pf->buf + pf->buf_i, ins, size);
+	pf->buf_i += size;
 }

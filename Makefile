@@ -6,47 +6,56 @@
 #    By: famillechakor <marvin@42.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 18:18:41 by famillech         #+#    #+#              #
-#    Updated: 2018/10/29 22:05:17 by schakor          ###   ########.fr        #
+#    Updated: 2018/11/13 16:13:29 by schakor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=		libftprintf.a
+NAME				=		libftprintf.a
 
-CC			=		gcc
+CC					=		gcc
 
-CFLAGS		=		-Wall -Wextra -Werror
+CFLAGS				=		-Wall -Wextra -Werror
 
-CPPFLAGS	=		-I includes
+CPPFLAGS			=		-I includes
 
-LIBS		=		./libft/libft.a
+SRC_PATH			=		./srcs/
 
-SRC_PATH	=		./srcs/
+OBJ_PATH			=		./objs/
 
-OBJ_PATH	=		./objs/
+SRC_FILES			=		ft_printf.c\
+							buffer.c\
+							destroy_pf.c\
+							parser_percent.c
 
-SRC_FILES	=		ft_printf.c\
-					init_pf.c\
-					buffer.c\
-					destroy_pf.c\
+OBJ_PATH_LIBFT		=		./libft/objs/
 
-OBJ_FILES	=		$(SRC_FILES:.c=.o)
+OBJ_FILES_LIBFT		=		memory/ft_memset.o\
+							string/ft_strdel.o\
+							memory/ft_memcpy.o\
+							memory/ft_memdel.o\
+							type/ft_isflagpf.o
 
-SRCS		=		$(addprefix $(SRC_PATH), $(SRC_FILES))
+OBJS_LIBFT			=		$(addprefix $(OBJ_PATH_LIBFT), $(OBJ_FILES_LIBFT))
 
-OBJS		=		$(addprefix $(OBJ_PATH), $(OBJ_FILES))
+OBJ_FILES			=		$(SRC_FILES:.c=.o)
+
+SRCS				=		$(addprefix $(SRC_PATH), $(SRC_FILES))
+
+OBJS				=		$(addprefix $(OBJ_PATH), $(OBJ_FILES))
+
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) | $(OBJ_PATH)
-	ar rc $@ $^ $(LIBS)
+$(NAME) : $(OBJS)
+	make -C libft
+	ar rc $@ $^ $(LIBS) $(OBJS_LIBFT)
 
 $(OBJ_PATH)%.o : $(SRC_PATH)%.c | $(OBJ_PATH)
-	make -C libft
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 $(OBJ_PATH) :
-	@mkdir -p $(OBJ_PATH)
-	@mkdir -p $(dir $(OBJS))
+	mkdir -p $@
+	mkdir -p $(dir $(OBJS))
 
 clean :
 	make -C libft clean
