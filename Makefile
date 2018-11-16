@@ -6,7 +6,7 @@
 #    By: famillechakor <marvin@42.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 18:18:41 by famillech         #+#    #+#              #
-#    Updated: 2018/11/13 16:13:29 by schakor          ###   ########.fr        #
+#    Updated: 2018/11/16 17:41:40 by schakor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,17 @@ OBJ_PATH			=		./objs/
 SRC_FILES			=		ft_printf.c\
 							buffer.c\
 							destroy_pf.c\
-							parser_percent.c
+							parser_percent.c\
+							conv/conv_d.c
 
 OBJ_PATH_LIBFT		=		./libft/objs/
 
 OBJ_FILES_LIBFT		=		memory/ft_memset.o\
+							conversion/ft_itoa.o\
+							string/ft_strlen.o\
 							string/ft_strdel.o\
+							string/ft_strdup.o\
+							string/ft_strcpy.o\
 							memory/ft_memcpy.o\
 							memory/ft_memdel.o\
 							type/ft_isflagpf.o

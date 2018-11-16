@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 17:13:19 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/16 17:08:39 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/16 17:45:32 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ void			insert_buffer(t_pf *pf, char *ins, int size);
 void			increase_buffer(t_pf *pf);
 void			destroy_pf(t_pf *pf);
 void			parser_percent(t_pf *pf, t_conv *conv);
+void			conv_d(t_pf *pf, t_conv *conv, va_list *ap);
 
 #endif
