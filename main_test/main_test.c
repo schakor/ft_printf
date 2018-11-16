@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 16:20:43 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/13 15:57:03 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/16 17:15:02 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		main(void)
 	printf("  || return value ft_printf = %d\n", ret1);
 	ret2 = printf("first test pour voir");
 	printf("  || return value printf = %d\n", ret2);
-	ft_printf("3 arg different : %+-0 #d | %+10d | %10.4d\n", 13, 20, 30);
-	printf("3 arg different : %10d | %+10d | %10.4d\n", 13, 20, 30);
+	ft_printf("3 arg different : %+-0 #hhd | %+10lld | %10.4ld\n", 13, 20, 30);
+	printf("3 arg different : %10hhd | %+10lld | %10.4ld\n", (char)13, (long long)20, (long)30);
 	return (0);
 }

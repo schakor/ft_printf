@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 17:12:31 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/14 11:32:27 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/16 17:18:48 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 static void			init_conv(t_conv *cv)
 {
-	cv->flags = 0;
+	cv->flag = 0;
 	cv->width = 0;
 	cv->prec = 0;
+	cv->mod = 0;
 	cv->conv = 0;
 }
 
@@ -51,7 +52,7 @@ int					ft_printf(const char *format, ...)
 			init_conv(&conv);
 			parser_percent(&pf, &conv);
 			static int i = 0;
-			printf("arg %d : minus = %d | plus = %d | zero = %d | space = %d | hash = %d | width = %llu | prec = %llu | conv = %c\n", i++, (conv.flags & FLAG_MINUS), ((conv.flags & FLAG_PLUS) >> 1), ((conv.flags & FLAG_ZERO) >> 2), ((conv.flags & FLAG_SPACE) >> 3), ((conv.flags & FLAG_HASH) >> 4), conv.width, conv.prec, conv.conv);
+			printf("%d : - = %d | + = %d | 0 = %d | ' ' = %d | # = %d | wid = %llu | pre = %llu | hh = %d | h = %d | ll = %d | l = %d | conv = %c\n", i++, (conv.flag & FLAG_MINUS), ((conv.flag & FLAG_PLUS) >> 1), ((conv.flag & FLAG_ZERO) >> 2), ((conv.flag & FLAG_SPACE) >> 3), ((conv.flag & FLAG_HASH) >> 4), conv.width, conv.prec,(conv.mod & MODIF_HH), ((conv.mod & MODIF_H) >> 1), ((conv.mod & MODIF_LL) >> 2), ((conv.mod & MODIF_L) >> 3), conv.conv);
 			//if ()
 			//	fcn_ptr[](&pf, &conv);
 			//insert_buffer(&pf, pf.conv_buf, pf.convsize);

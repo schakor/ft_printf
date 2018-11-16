@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 17:13:19 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/14 11:32:29 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/16 17:08:39 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ typedef unsigned long long	t_uint64;
 # define FLAG_ZERO			0x4
 # define FLAG_SPACE			0x8
 # define FLAG_HASH			0x10
-# define MODIF_HH			0x16
-# define MODIF_H			0x32
-# define MODIF_LL			0x64
-# define MODIF_L			0x80
+# define MODIF_HH			0x1
+# define MODIF_H			0x2
+# define MODIF_LL			0x4
+# define MODIF_L			0x8
 
 # define BUFFSIZE			2048
 
@@ -56,9 +56,10 @@ enum
 
 typedef struct	s_conv
 {
-	t_uint8		flag_mod;
+	t_uint8		flag;
 	t_uint64	width;
 	t_uint64	prec;
+	t_uint8		mod;
 	t_uint8		conv;
 }				t_conv;
 
