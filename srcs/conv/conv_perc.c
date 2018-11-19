@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 17:50:38 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/19 17:51:04 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/19 20:55:02 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void		conv_perc(t_pf *pf, t_conv *conv, va_list *ap)
 {
-	(void)pf;
-	(void)conv;
 	(void)ap;
+	(void)conv;
+	pf->conv_buf = ft_strdup("%");
+	pf->convsize = 1;
 }
