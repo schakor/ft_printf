@@ -6,7 +6,7 @@
 #    By: famillechakor <marvin@42.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 18:18:41 by famillech         #+#    #+#              #
-#    Updated: 2018/11/19 15:44:51 by schakor          ###   ########.fr        #
+#    Updated: 2018/11/19 18:02:49 by schakor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,17 @@ SRC_FILES			=		ft_printf.c\
 							buffer.c\
 							destroy_pf.c\
 							parser_percent.c\
-							conv/conv_d.c\
 							conv/conv_c.c\
 							conv/conv_s.c\
-							conv/conv_p.c
+							conv/conv_p.c\
+							conv/conv_d.c\
+							conv/conv_i.c\
+							conv/conv_o.c\
+							conv/conv_u.c\
+							conv/conv_x.c\
+							conv/conv_mx.c\
+							conv/conv_f.c\
+							conv/conv_perc.c\
 
 OBJ_PATH_LIBFT		=		./libft/objs/
 
@@ -46,6 +53,8 @@ OBJ_FILES_LIBFT		=		memory/ft_memset.o\
 							maths/ft_lllen.o\
 							conversion/ft_lltoa.o\
 							memory/ft_bzero.o\
+							string/ft_strjoin.o\
+							string/ft_strcat.o\
 
 OBJS_LIBFT			=		$(addprefix $(OBJ_PATH_LIBFT), $(OBJ_FILES_LIBFT))
 

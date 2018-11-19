@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 17:13:19 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/19 16:03:43 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/19 18:09:06 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ typedef unsigned long long	t_uint64;
 typedef struct	s_conv
 {
 	t_uint8		flag;
-	t_uint64	width;
-	t_uint64	prec;
+	t_int32		width;
+	t_int32		prec;
 	t_uint8		mod;
 	t_int8		i_conv;
 }				t_conv;
@@ -83,7 +83,14 @@ void			destroy_pf(t_pf *pf);
 void			parser_percent(t_pf *pf, t_conv *conv);
 void			conv_c(t_pf *pf, t_conv *conv, va_list *ap);
 void			conv_s(t_pf *pf, t_conv *conv, va_list *ap);
-void			conv_d(t_pf *pf, t_conv *conv, va_list *ap);
 void			conv_p(t_pf *pf, t_conv *conv, va_list *ap);
+void			conv_d(t_pf *pf, t_conv *conv, va_list *ap);
+void			conv_i(t_pf *pf, t_conv *conv, va_list *ap);
+void			conv_o(t_pf *pf, t_conv *conv, va_list *ap);
+void			conv_u(t_pf *pf, t_conv *conv, va_list *ap);
+void			conv_x(t_pf *pf, t_conv *conv, va_list *ap);
+void			conv_mx(t_pf *pf, t_conv *conv, va_list *ap);
+void			conv_f(t_pf *pf, t_conv *conv, va_list *ap);
+void			conv_perc(t_pf *pf, t_conv *conv, va_list *ap);
 
 #endif

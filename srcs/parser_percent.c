@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 17:46:01 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/19 16:05:36 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/19 18:40:08 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ static void				parse_prec(t_pf *pf, t_conv *conv)
 	if (*pf->fmt && *pf->fmt == '.')
 	{
 		pf->fmt++;
-		conv->flag &= FLAG_PLUS;
+		conv->flag |= FLAG_PREC;
+		conv->flag &= ~FLAG_PLUS;
 		while (*pf->fmt && *pf->fmt >= '0' && *pf->fmt < '9')
 			conv->prec = (conv->prec * 10) + (*pf->fmt++ - '0');
-		conv->flag |= FLAG_PREC;
 	}
 }
 
@@ -86,6 +86,8 @@ static void				parse_conv(t_pf *pf, t_conv *conv)
 	{
 		if (valid_conv[i] == *pf->fmt)
 		{
+			if (i >= 3 && i <= 8 && (conv->flag & FLAG_PREC))
+				conv->flag &= ~FLAG_ZERO;
 			conv->i_conv = i;
 			(pf->fmt)++;
 			return ;
