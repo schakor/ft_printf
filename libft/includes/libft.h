@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 18:00:32 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/19 15:21:46 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/19 20:26:35 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int					ft_tolower(int c);
 char				*ft_itoa(int n);
 char				*ft_lltoa(long long int n);
 char				*ft_ulltoa(unsigned long long int n);
-char				*ft_ulltoa_base(unsigned long long int n, int base);
+char				*ft_ulltoa_base(unsigned long long int n, int base, int maj);
 
 /*
 **		TYPE FUNCTIONS

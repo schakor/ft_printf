@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 17:46:48 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/19 17:47:16 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/19 20:40:38 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 void		conv_i(t_pf *pf, t_conv *conv, va_list *ap)
 {
-	(void)pf;
-	(void)conv;
-	(void)ap;
+	conv_d(pf, conv, ap);
 }

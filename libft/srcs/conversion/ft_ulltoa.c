@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 14:24:35 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/19 15:30:24 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/19 20:26:52 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 char			*ft_ulltoa(unsigned long long n)
 {
-	return (ft_ulltoa_base(n, 10));
+	return (ft_ulltoa_base(n, 10, 0));
 }

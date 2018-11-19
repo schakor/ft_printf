@@ -6,7 +6,7 @@
 #    By: famillechakor <marvin@42.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 18:18:41 by famillech         #+#    #+#              #
-#    Updated: 2018/11/19 18:02:49 by schakor          ###   ########.fr        #
+#    Updated: 2018/11/19 20:34:08 by schakor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,8 @@ OBJ_FILES_LIBFT		=		memory/ft_memset.o\
 							memory/ft_bzero.o\
 							string/ft_strjoin.o\
 							string/ft_strcat.o\
+							conversion/ft_ulltoa_base.o\
+							maths/ft_ulllen_base.o\
 
 OBJS_LIBFT			=		$(addprefix $(OBJ_PATH_LIBFT), $(OBJ_FILES_LIBFT))
 
