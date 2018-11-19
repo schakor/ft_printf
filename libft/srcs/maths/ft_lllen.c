@@ -6,25 +6,25 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 14:08:13 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/19 14:40:13 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/19 15:31:40 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int						ft_lllen(signed long long nb)
+int						ft_lllen(long long int n)
 {
 	int					ret;
 	unsigned long long	tmp;
 
 	ret = 1;
-	if (nb < 0)
+	if (n < 0)
 	{
-		tmp = -nb;
+		tmp = -n;
 		ret += 1;
 	}
 	else
-		tmp = nb;
+		tmp = n;
 	while (tmp /= 10)
 		ret += 1;
 	return (ret);

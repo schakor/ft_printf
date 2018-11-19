@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 17:46:01 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/19 12:16:03 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/19 16:05:36 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,12 @@ static void				parse_flags(t_pf *pf, t_conv *conv)
 
 static void				parse_width(t_pf *pf, t_conv *conv)
 {
-	while (*pf->fmt && *pf->fmt >= '0' && *pf->fmt <= '9')
-		conv->width = (conv->width * 10) + (*pf->fmt++ - '0');
+	if (*pf->fmt && *pf->fmt >= '0' && *pf->fmt <= '9')
+	{
+		while (*pf->fmt && *pf->fmt >= '0' && *pf->fmt <= '9')
+			conv->width = (conv->width * 10) + (*pf->fmt++ - '0');
+		conv->flag |= FLAG_WIDTH;
+	}
 }
 
 static void				parse_prec(t_pf *pf, t_conv *conv)
@@ -44,6 +48,7 @@ static void				parse_prec(t_pf *pf, t_conv *conv)
 		conv->flag &= FLAG_PLUS;
 		while (*pf->fmt && *pf->fmt >= '0' && *pf->fmt < '9')
 			conv->prec = (conv->prec * 10) + (*pf->fmt++ - '0');
+		conv->flag |= FLAG_PREC;
 	}
 }
 

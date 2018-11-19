@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 17:13:19 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/19 14:23:13 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/19 16:03:43 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef unsigned long long	t_uint64;
 # define FLAG_ZERO			0x4
 # define FLAG_SPACE			0x8
 # define FLAG_HASH			0x10
+# define FLAG_WIDTH			0x20
+# define FLAG_PREC			0x40
 
 /*
 **	BIT FLAGS MODIFIER : 'hh' | 'h' | 'll' | 'l'

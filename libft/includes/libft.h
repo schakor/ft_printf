@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 18:00:32 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/19 14:44:50 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/19 15:21:46 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <string.h>
 # include "get_next_line.h"
+# include <stdio.h>
 
 /*
 **		MEMORY FUNCTIONS
@@ -78,6 +79,7 @@ int					ft_tolower(int c);
 char				*ft_itoa(int n);
 char				*ft_lltoa(long long int n);
 char				*ft_ulltoa(unsigned long long int n);
+char				*ft_ulltoa_base(unsigned long long int n, int base);
 
 /*
 **		TYPE FUNCTIONS
@@ -117,9 +119,9 @@ void				ft_putnbrendl_fd(int n, int fd);
 int					ft_abs(int n);
 int					ft_min(int x, int y);
 int					ft_max(int x, int y);
-int					ft_lllen(long long n);
-int					ft_ulllen(unsigned long long n);
-
+int					ft_lllen(long long int n);
+int					ft_ulllen(unsigned long long int n);
+int					ft_ulllen_base(unsigned long long int n, int base);
 /*
 **		LINKED LISTS
 */

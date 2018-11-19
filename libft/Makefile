@@ -6,7 +6,7 @@
 #    By: schakor <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/14 17:56:43 by schakor           #+#    #+#              #
-#    Updated: 2018/11/19 14:45:24 by schakor          ###   ########.fr        #
+#    Updated: 2018/11/19 15:43:20 by schakor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC_FILES	=	array/ft_arrdup.c\
 				conversion/ft_toupper.c\
 				conversion/ft_lltoa.c\
 				conversion/ft_ulltoa.c\
+				conversion/ft_ulltoa_base.c\
 				gnl/get_next_line.c\
 				list/ft_lstadd.c\
 				list/ft_lstaddlast.c\
@@ -44,6 +45,7 @@ SRC_FILES	=	array/ft_arrdup.c\
 				maths/ft_min.c\
 				maths/ft_lllen.c\
 				maths/ft_ulllen.c\
+				maths/ft_ulllen_base.c\
 				memory/ft_bzero.c\
 				memory/ft_memalloc.c\
 				memory/ft_memccpy.c\

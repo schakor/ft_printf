@@ -6,18 +6,18 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 14:11:37 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/19 14:40:35 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/19 15:13:45 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_ulllen(unsigned long long nb)
+int			ft_ulllen(unsigned long long n)
 {
 	int		ret;
 
 	ret = 1;
-	while (nb /= 10)
+	while (n /= 10)
 		ret += 1;
 	return (ret);
 }
