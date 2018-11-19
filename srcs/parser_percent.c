@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 17:46:01 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/16 17:45:40 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/19 12:16:03 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ static void				parse_mod(t_pf *pf, t_conv *conv)
 static void				parse_conv(t_pf *pf, t_conv *conv)
 {
 	static const char	*valid_conv = "cspdiouxXf%";
-	size_t				i;
+	t_uint8				i;
 
 	i = 0;
 	while (valid_conv[i])
 	{
 		if (valid_conv[i] == *pf->fmt)
 		{
-			conv->conv = valid_conv[i];
+			conv->i_conv = i;
 			(pf->fmt)++;
 			return ;
 		}

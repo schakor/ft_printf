@@ -6,7 +6,7 @@
 #    By: famillechakor <marvin@42.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 18:18:41 by famillech         #+#    #+#              #
-#    Updated: 2018/11/16 17:41:40 by schakor          ###   ########.fr        #
+#    Updated: 2018/11/19 12:23:20 by schakor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,10 @@ SRC_FILES			=		ft_printf.c\
 							buffer.c\
 							destroy_pf.c\
 							parser_percent.c\
-							conv/conv_d.c
+							conv/conv_d.c\
+							conv/conv_c.c\
+							conv/conv_s.c\
+							conv/conv_p.c
 
 OBJ_PATH_LIBFT		=		./libft/objs/
 

@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 18:00:32 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/13 16:12:32 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/19 14:44:50 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ int					ft_atoi(const char *s);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 char				*ft_itoa(int n);
+char				*ft_lltoa(long long int n);
+char				*ft_ulltoa(unsigned long long int n);
 
 /*
 **		TYPE FUNCTIONS
@@ -115,6 +117,8 @@ void				ft_putnbrendl_fd(int n, int fd);
 int					ft_abs(int n);
 int					ft_min(int x, int y);
 int					ft_max(int x, int y);
+int					ft_lllen(long long n);
+int					ft_ulllen(unsigned long long n);
 
 /*
 **		LINKED LISTS
