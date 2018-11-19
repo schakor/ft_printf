@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 16:20:43 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/19 20:47:36 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/19 21:15:28 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,9 @@ int		main(void)
 	printf(" Argument big hex : %X\n", 752424);
 	ft_printf("Argument octal : %o\n", 484823);
 	printf("Argument octal : %o\n", 484823);
+	ft_printf("Char : %-4c\n", 'U');
+	printf("Char : %-4c\n", 'U');
+	ft_printf("hello ca%----4c %1c va %10c%-c ??\n", '\0', '\n', (char)564, 0);
+	printf("hello ca%----4c %1c va %10c%-c ??\n", '\0', '\n', (char)564, 0);
 	return (0);
 }
