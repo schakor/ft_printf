@@ -6,6 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 12:17:34 by schakor           #+#    #+#             */
+/*   Updated: 2018/11/20 13:28:42 by khsadira         ###   ########.fr       */
 /*   Updated: 2018/11/19 21:16:58 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -25,7 +26,10 @@ void		conv_c(t_pf *pf, t_conv *conv, va_list *ap)
 	{
 		if (!(tmp = ft_memalloc(conv->width)))
 			return ;
-		ft_memset(tmp, ' ', conv->width - 1);
+		if ((conv->flag & FLAG_ZERO))
+			ft_memset(tmp, '0', conv->width - 1);
+		else
+			ft_memset(tmp, ' ', conv->width - 1);
 		if (conv->flag & FLAG_MINUS)
 			pf->conv_buf = ft_strjoin(pf->conv_buf, tmp);
 		else
