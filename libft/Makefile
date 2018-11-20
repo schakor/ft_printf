@@ -6,7 +6,7 @@
 #    By: schakor <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/14 17:56:43 by schakor           #+#    #+#              #
-#    Updated: 2018/11/19 15:43:20 by schakor          ###   ########.fr        #
+#    Updated: 2018/11/20 15:53:10 by schakor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,7 @@ SRC_FILES	=	array/ft_arrdup.c\
 				string/ft_strmapi.c\
 				string/ft_strnequ.c\
 				string/ft_strsplit.c\
+				string/ft_strfjoin.c\
 				type/ft_isalnum.c\
 				type/ft_isascii.c\
 				type/ft_isescaped.c\

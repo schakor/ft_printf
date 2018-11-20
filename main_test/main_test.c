@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 16:20:43 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/20 14:21:57 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/20 16:31:45 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,18 @@ int		main(void)
 	ret1 = ft_printf("%+d", -4440);
 	printf(" || return value printf = %d\n", ret1);
 	ret1 = printf("%+d", -4440);
+	printf(" || return value printf = %d\n", ret1);
+	ret1 = ft_printf("small to see if %c it works", '\0');
+	printf(" || return value printf = %d\n", ret1);
+	ret1 = printf("small to see if %c it works", '\0');
+	printf(" || return value printf = %d\n", ret1);
+	ret1 = ft_printf("%u", -0);
+	printf(" || return value printf = %d\n", ret1);
+	ret1 = printf("%u", -0);
+	printf(" || return value printf = %d\n", ret1);
+	ret1 = ft_printf("%.u", 0);
+	printf(" || return value printf = %d\n", ret1);
+	ret1 = printf("%.u", 0);
 	printf(" || return value printf = %d\n", ret1);
 	return (0);
 }

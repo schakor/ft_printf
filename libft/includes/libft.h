@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 18:00:32 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/19 20:26:35 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/20 15:52:05 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strjoinjoin(char *s1, char *s2, char *s3);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
+char				*ft_strfjoin(char *s1, char *s2, int opt);
 
 /*
 **		CHAR ** FUNCTIONS
@@ -79,7 +80,7 @@ int					ft_tolower(int c);
 char				*ft_itoa(int n);
 char				*ft_lltoa(long long int n);
 char				*ft_ulltoa(unsigned long long int n);
-char				*ft_ulltoa_base(unsigned long long int n, int base, int maj);
+char				*ft_ulltoa_base(unsigned long long n, int base, int maj);
 
 /*
 **		TYPE FUNCTIONS

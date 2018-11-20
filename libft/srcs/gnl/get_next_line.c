@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/06 16:42:26 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/14 10:52:58 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/20 15:28:33 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int		ft_reduce(char **over, char **line)
 	return (1);
 }
 
-static void		ft_strfjoin(char **s1, char *s2)
+static void		ft_strfreejoin(char **s1, char *s2)
 {
 	char	*tmp;
 
@@ -56,7 +56,7 @@ int				get_next_line(const int fd, char **line)
 	while (nl_ptr == NULL && (rd = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[rd] = '\0';
-		ft_strfjoin(&over[fd], buf);
+		ft_strfreejoin(&over[fd], buf);
 		nl_ptr = ft_strchr(over[fd], '\n');
 	}
 	if (nl_ptr != NULL)

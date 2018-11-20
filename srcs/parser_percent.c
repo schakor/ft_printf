@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 17:46:01 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/20 14:12:50 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/20 14:57:10 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ static void				parse_conv(t_pf *pf, t_conv *conv)
 void					parser_percent(t_pf *pf, t_conv *conv)
 {
 	pf->fmt++;
-	//check_validity();
 	parse_flags(pf, conv);
 	parse_width(pf, conv);
 	parse_prec(pf, conv);
