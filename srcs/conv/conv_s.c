@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 12:19:54 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/20 15:56:25 by khsadira         ###   ########.fr       */
+/*   Updated: 2018/11/20 16:46:51 by khsadira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void		conv_s(t_pf *pf, t_conv *conv, va_list *ap)
 	{
 		if (!(tmp = ft_memalloc(i)))
 			return ;
-		if ((conv->flag & FLAG_ZERO))
-			ft_memset(tmp, '0', conv->width - 1);
+		if (conv->flag & FLAG_ZERO)
+			ft_memset(tmp, '0', i - 1);
 		else
-			ft_memset(tmp, ' ', conv->width - 1);
+			ft_memset(tmp, ' ', i - 1);
 		if (conv->flag & FLAG_MINUS)
 			ft_memcpy(tmp, s, ft_strlen(s));
 		else
@@ -45,6 +45,8 @@ void		conv_s(t_pf *pf, t_conv *conv, va_list *ap)
 	}
 	else
 		tmp = ft_strdup(s);
+	if (conv->flag & FLAG_PREC && s)
+		ft_strdel(&s);
 	pf->conv_buf = tmp;
 	pf->convsize += i;
 }
