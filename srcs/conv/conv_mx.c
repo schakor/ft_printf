@@ -6,12 +6,11 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 17:49:29 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/19 20:34:26 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/20 14:56:05 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 void						conv_mx(t_pf *pf, t_conv *conv, va_list *ap)
 {
@@ -28,5 +27,6 @@ void						conv_mx(t_pf *pf, t_conv *conv, va_list *ap)
 	else
 		d = (unsigned int)va_arg(*ap, unsigned int);
 	pf->conv_buf = ft_ulltoa_base(d, 16, 1);
+	generic_number_conv(pf, conv);
 	pf->convsize = ft_strlen(pf->conv_buf);
 }

@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 17:48:23 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/19 20:41:15 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/20 13:44:08 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ void						conv_x(t_pf *pf, t_conv *conv, va_list *ap)
 	else
 		d = (unsigned int)va_arg(*ap, unsigned int);
 	pf->conv_buf = ft_ulltoa_base(d, 16, 0);
+	generic_number_conv(pf, conv);
 	pf->convsize = ft_strlen(pf->conv_buf);
 }

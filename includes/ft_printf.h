@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 17:13:19 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/20 11:18:11 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/20 14:25:09 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ void			conv_x(t_pf *pf, t_conv *conv, va_list *ap);
 void			conv_mx(t_pf *pf, t_conv *conv, va_list *ap);
 void			conv_f(t_pf *pf, t_conv *conv, va_list *ap);
 void			conv_perc(t_pf *pf, t_conv *conv, va_list *ap);
+void			generic_number_conv(t_pf *pf, t_conv *conv);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: famillechakor <marvin@42.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 18:18:41 by famillech         #+#    #+#              #
-#    Updated: 2018/11/19 20:34:08 by schakor          ###   ########.fr        #
+#    Updated: 2018/11/20 13:47:32 by schakor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC_FILES			=		ft_printf.c\
 							conv/conv_mx.c\
 							conv/conv_f.c\
 							conv/conv_perc.c\
+							conv/generic_number_conv.c
 
 OBJ_PATH_LIBFT		=		./libft/objs/
 
