@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 17:46:01 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/19 18:40:08 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/20 13:26:30 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@ static void				parse_flags(t_pf *pf, t_conv *conv)
 	while (*pf->fmt && ft_isflagpf(*pf->fmt))
 	{
 		if (*pf->fmt == '-')
+		{
 			conv->flag |= FLAG_MINUS;
+			conv->flag &= ~FLAG_ZERO;
+		}
 		else if (*pf->fmt == '+')
 			conv->flag |= FLAG_PLUS;
-		else if (*pf->fmt == '0')
+		else if (*pf->fmt == '0' && !(conv->flag & FLAG_MINUS))
 			conv->flag |= FLAG_ZERO;
 		else if (*pf->fmt == ' ')
 			conv->flag |= FLAG_SPACE;
@@ -46,8 +49,8 @@ static void				parse_prec(t_pf *pf, t_conv *conv)
 	{
 		pf->fmt++;
 		conv->flag |= FLAG_PREC;
-		conv->flag &= ~FLAG_PLUS;
-		while (*pf->fmt && *pf->fmt >= '0' && *pf->fmt < '9')
+		conv->flag &= ~FLAG_ZERO;
+		while (*pf->fmt && *pf->fmt >= '0' && *pf->fmt <= '9')
 			conv->prec = (conv->prec * 10) + (*pf->fmt++ - '0');
 	}
 }

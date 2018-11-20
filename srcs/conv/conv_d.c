@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 13:07:48 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/19 20:48:31 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/20 13:26:16 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,6 @@ void			conv_d(t_pf *pf, t_conv *conv, va_list *ap)
 	else
 		d = (int)va_arg(*ap, int);
 	len = ft_lllen(d);
-	/*
-	if ((conv->flag & FLAG_WIDTH) && len < conv->width)
-	{
-		if (len < conv->prec)
-		{
-			pf->conv_buf = (char *)ft_memalloc(conv->width - conv->prec + 1);
-			ft_memset(pf->conv_buf, ' ', conv->width - conv->prec);
-		}
-		else
-		{
-			pf->conv_buf = (char *)ft_memalloc(conv->width - len + 1);
-			ft_memset(pf->conv_buf, ' ', conv->width - len);
-		}
-	}
-	*/
 	pf->conv_buf = ft_lltoa(d);
 	if (conv->flag != 0)
 	{
@@ -61,15 +46,29 @@ void			conv_d(t_pf *pf, t_conv *conv, va_list *ap)
 		}
 		if ((conv->flag & FLAG_WIDTH) && len < conv->width)
 		{
-			tmp = (char *)ft_memalloc(conv->width - len + 1);
-			ft_memset(tmp, ' ', conv->width - len);
-			if (pf->conv_buf)
-				pf->conv_buf = ft_strjoin(tmp, pf->conv_buf);
+			if ((conv->flag & FLAG_ZERO) && (conv->flag & FLAG_SPACE))
+			{
+				printf("ok\n");
+				tmp = (char *)ft_memalloc(conv->width - len);
+				ft_memset(tmp, '0', conv->width - len - 1);
+			}
+			else if (conv->flag & FLAG_ZERO)
+			{
+				tmp = (char *)ft_memalloc(conv->width - len + 1);
+				ft_memset(tmp, '0', conv->width - len);
+			}
 			else
-				pf->conv_buf = tmp;
+			{
+				tmp = (char *)ft_memalloc(conv->width - len + 1);
+				ft_memset(tmp, ' ', conv->width - len);
+			}
+			if (conv->flag & FLAG_MINUS)
+				pf->conv_buf = ft_strjoin(pf->conv_buf, tmp);
+			else
+				pf->conv_buf = ft_strjoin(tmp, pf->conv_buf);
 		}
+		if (conv->flag & FLAG_SPACE)
+			pf->conv_buf = ft_strjoin(" ", pf->conv_buf);
 	}
-	else
-		pf->conv_buf = ft_lltoa(d);
 	pf->convsize = ft_strlen(pf->conv_buf);
 }
