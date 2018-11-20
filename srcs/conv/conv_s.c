@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 12:19:54 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/20 15:02:07 by khsadira         ###   ########.fr       */
+/*   Updated: 2018/11/20 15:56:25 by khsadira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void		conv_s(t_pf *pf, t_conv *conv, va_list *ap)
 		else
 			ft_memset(tmp, ' ', conv->width - 1);
 		if (conv->flag & FLAG_MINUS)
-			ft_memcpy(tmp, s, i);
+			ft_memcpy(tmp, s, ft_strlen(s));
 		else
 			ft_memcpy(tmp + (i - ft_strlen(s)), s, i);
 	}
