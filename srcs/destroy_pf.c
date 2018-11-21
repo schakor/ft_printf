@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 18:33:45 by schakor           #+#    #+#             */
-/*   Updated: 2018/10/29 18:34:29 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/21 11:00:01 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 void		destroy_pf(t_pf *pf)
 {
 	ft_strdel(&(pf->buf));
-	free(pf);
-	pf = NULL;
+	ft_strdel(&(pf->conv_buf));
 }

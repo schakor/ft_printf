@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:44:37 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/20 15:34:20 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/21 12:07:08 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,20 @@ void		generic_number_conv(t_pf *pf, t_conv *conv)
 	{
 		if ((conv->flag & FLAG_PREC) && len < conv->prec)
 		{
-			tmp = (char *)ft_memalloc(conv->prec - len + 1);
-			ft_memset(tmp, '0', conv->prec - len);
-			pf->conv_buf = ft_strjoin(tmp, pf->conv_buf);
-			len = conv->prec;
+			if (!ok)
+			{
+				tmp = (char *)ft_memalloc(conv->prec - len + 2);
+				ft_memset(tmp, '0', conv->prec - len + 1);
+				tmp = ft_strjoin("-", tmp);
+				pf->conv_buf = ft_strjoin(tmp, pf->conv_buf + 1);
+			}
+			else
+			{
+				tmp = (char *)ft_memalloc(conv->prec - len + 1);
+				ft_memset(tmp, '0', conv->prec - len);
+				pf->conv_buf = ft_strjoin(tmp, pf->conv_buf);
+				len = conv->prec;
+			}
 		}
 		if ((conv->flag & FLAG_PLUS) && ok)
 		{
@@ -52,10 +62,24 @@ void		generic_number_conv(t_pf *pf, t_conv *conv)
 				else
 					ft_memset(tmp, ' ', conv->width - len);
 			}
-			if (conv->flag & FLAG_MINUS)
-				pf->conv_buf = ft_strjoin(pf->conv_buf, tmp);
+			if (!ok)
+			{
+				
+				if (conv->flag & FLAG_MINUS)
+					pf->conv_buf = ft_strjoin(pf->conv_buf, tmp);
+				else
+				{
+					tmp = ft_strjoin("-", tmp);
+					pf->conv_buf = ft_strjoin(tmp, pf->conv_buf + 1);
+				}
+			}
 			else
-				pf->conv_buf = ft_strjoin(tmp, pf->conv_buf);
+			{
+				if (conv->flag & FLAG_MINUS)
+					pf->conv_buf = ft_strjoin(pf->conv_buf, tmp);
+				else
+					pf->conv_buf = ft_strjoin(tmp, pf->conv_buf);
+			}
 		}
 		if ((conv->flag & FLAG_SPACE) && !(conv->flag & FLAG_PLUS))
 			pf->conv_buf = ft_strjoin(" ", pf->conv_buf);

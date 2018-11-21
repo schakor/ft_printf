@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 16:20:43 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/20 16:31:45 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/21 12:06:12 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,17 @@ int		main(void)
 	printf(" || return value printf = %d\n", ret1);
 	ret1 = printf("%u", -0);
 	printf(" || return value printf = %d\n", ret1);
-	ret1 = ft_printf("%.u", 0);
+	ret1 = ft_printf("%5d", -741);
 	printf(" || return value printf = %d\n", ret1);
-	ret1 = printf("%.u", 0);
+	ret1 = printf("%5d", -741);
 	printf(" || return value printf = %d\n", ret1);
+	ret1 = ft_printf("%08i", -71);
+	printf(" || return value printf = %d\n", ret1);
+	ret1 = printf("%08i", -71);
+	printf(" || return value printf = %d\n", ret1);
+	//ret1 = ft_printf("test %-12i et %--2.4s %24s !\n", 0, NULL, "\"coco\"");
+	//printf("ret = %d\n", ret1);
+	//ret1 = printf("test %-12i et %--2.4s %24s !\n", 0, NULL, "\"coco\"");
+	//printf("ret = %d\n", ret1);
 	return (0);
 }
