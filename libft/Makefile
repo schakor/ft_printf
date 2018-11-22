@@ -6,7 +6,7 @@
 #    By: schakor <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/14 17:56:43 by schakor           #+#    #+#              #
-#    Updated: 2018/11/20 15:53:10 by schakor          ###   ########.fr        #
+#    Updated: 2018/11/22 15:26:02 by schakor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,7 @@ SRC_FILES	=	array/ft_arrdup.c\
 				string/ft_strlcat.c\
 				string/ft_strncat.c\
 				string/ft_strnew.c\
+				string/ft_strnewchar.c\
 				string/ft_strstr.c\
 				string/ft_strchr.c\
 				string/ft_strdel.c\
