@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 17:46:01 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/22 15:14:25 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/23 13:39:08 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static void				parse_prec(t_pf *pf, t_conv *conv)
 	{
 		pf->fmt++;
 		conv->flag |= FLAG_PREC;
-		conv->flag &= ~FLAG_ZERO;
 		while (*pf->fmt && *pf->fmt >= '0' && *pf->fmt <= '9')
 			conv->prec = (conv->prec * 10) + (*pf->fmt++ - '0');
 	}
