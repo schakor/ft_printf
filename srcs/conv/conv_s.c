@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 12:19:54 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/21 09:58:30 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/23 15:32:56 by khsadira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void		conv_s(t_pf *pf, t_conv *conv, va_list *ap)
 	int		i;
 
 	s = (char *)va_arg(*ap, char *);
+	if (!s)
+		pf->conv_buf = ft_strdup("(null)");
 	if (conv->flag & FLAG_PREC)
 		s = ft_strsub(s, 0, conv->prec);
 	i = max_value(ft_strlen(s), conv->width);

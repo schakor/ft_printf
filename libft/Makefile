@@ -6,7 +6,7 @@
 #    By: schakor <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/14 17:56:43 by schakor           #+#    #+#              #
-#    Updated: 2018/11/22 15:26:02 by schakor          ###   ########.fr        #
+#    Updated: 2018/11/22 15:47:29 by khsadira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,9 +43,11 @@ SRC_FILES	=	array/ft_arrdup.c\
 				maths/ft_abs.c\
 				maths/ft_max.c\
 				maths/ft_min.c\
+				maths/ft_dlen.c\
 				maths/ft_lllen.c\
 				maths/ft_ulllen.c\
 				maths/ft_ulllen_base.c\
+				maths/ft_sqrt.c\
 				memory/ft_bzero.c\
 				memory/ft_memalloc.c\
 				memory/ft_memccpy.c\

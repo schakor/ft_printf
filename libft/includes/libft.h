@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 18:00:32 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/22 15:26:27 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/22 15:47:16 by khsadira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,12 @@ void				ft_putnbrendl_fd(int n, int fd);
 int					ft_abs(int n);
 int					ft_min(int x, int y);
 int					ft_max(int x, int y);
+int					ft_dlen(double n);
 int					ft_lllen(long long int n);
 int					ft_ulllen(unsigned long long int n);
 int					ft_ulllen_base(unsigned long long int n, int base);
+int					ft_sqrt(int nb);
+
 /*
 **		LINKED LISTS
 */
