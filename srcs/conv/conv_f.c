@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 17:50:08 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/23 15:39:31 by khsadira         ###   ########.fr       */
+/*   Updated: 2018/11/28 14:56:56 by khsadira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	max_value(int a, int b)
 static char		*convert_to_str(double n, int int_len, int float_len, char *tmp)
 {
 	int	i;
-
+	int	stock;
 	(void)n;
 	(void)int_len;
 	(void)float_len;
@@ -30,8 +30,29 @@ static char		*convert_to_str(double n, int int_len, int float_len, char *tmp)
 	i = 0;
 	if (tmp[i] == '-')
 		i++;
-	printf("%d | %d\n", int_len, float_len);
-	ft_putendl(tmp);
+	stock = int_len;
+	while (stock--)
+		n /= 10;
+	stock = int_len;
+	//printf("here %f\n", n);
+	while (stock--)
+	{
+		n *= 10;
+		//printf("f = %f\n", n);
+		//printf("%d | ", (int)n);
+		tmp[i++] = (int)n % 10 + 48;
+		n = n - (int)n % 10;
+		//printf("%d | ", (int)n);
+		//printf("%c\n", (int)n % 10 + 48);
+	}
+	stock = float_len;
+	tmp[i++] = '.';
+	while (stock--)
+	{
+		n *= 10;
+		tmp[i++] = (int)n % 10 + 48;
+		n = n - (int)n % 10;
+	}
 	return (tmp);
 }
 static char		*from_d_to_str(double f, int int_len, int float_len, t_conv *conv)
@@ -43,7 +64,7 @@ static char		*from_d_to_str(double f, int int_len, int float_len, t_conv *conv)
 
 	point = float_len > 0 ? 1 : 0;
 	neg = f < 0 ? 1 : 0;
-	i = float_len + neg + max_value(int_len + float_len, conv->width);
+	i = point + neg + max_value(int_len + float_len, conv->width) + 1;
 	printf("i = %d | %d | %d\n", i, int_len, float_len);
 	if (!(tmp = ft_memalloc(i)))
 		return (NULL);
@@ -62,7 +83,8 @@ static char		*from_d_to_str(double f, int int_len, int float_len, t_conv *conv)
 			ft_memcpy(tmp + (i - (float_len + int_len)), "-", 1);
 		tmp = convert_to_str(f, int_len, float_len, tmp);
 	}
-
+	else
+		tmp = convert_to_str(f, int_len, float_len, tmp);
 	return (tmp);
 }
 
@@ -73,15 +95,15 @@ void		conv_f(t_pf *pf, t_conv *conv, va_list *ap)
 	int			float_len;
 
 	/*(void)pf;
-	(void)conv;
-	(void)ap;*/
+	  (void)conv;
+	  (void)ap;*/
 	f = (double)va_arg(*ap, double);	
 	int_len = ft_dlen(f);
 	float_len = 6;
 	float_len = (conv->flag & FLAG_PREC) ? conv->prec : 6;
 	if (conv->flag & FLAG_PREC)
 		float_len = conv->prec;
-	printf("%f\ni = %d | f = %d | conv = %d\n", f, int_len, float_len, conv->width);
+//	printf("%f\ni = %d | f = %d | conv = %d\n", f, int_len, float_len, conv->width);
 	pf->conv_buf = from_d_to_str(f, int_len, float_len, conv);
 	pf->convsize = max_value(int_len + float_len, conv->width);
 }
