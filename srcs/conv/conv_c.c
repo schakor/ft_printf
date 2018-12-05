@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 12:17:34 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/20 14:55:36 by schakor          ###   ########.fr       */
+/*   Updated: 2018/12/05 20:23:23 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void		conv_c(t_pf *pf, t_conv *conv, va_list *ap)
 		else
 			ft_memset(tmp, ' ', conv->width - 1);
 		if (conv->flag & FLAG_MINUS)
-			pf->conv_buf = ft_strjoin(pf->conv_buf, tmp);
+			pf->conv_buf = ft_strfjoin(pf->conv_buf, tmp, 2);
 		else
-			pf->conv_buf = ft_strjoin(tmp, pf->conv_buf);
+			pf->conv_buf = ft_strfjoin(tmp, pf->conv_buf, 2);
 		pf->convsize += conv->width - 1;
 	}
 }

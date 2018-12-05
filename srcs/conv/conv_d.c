@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 13:07:48 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/20 15:41:20 by schakor          ###   ########.fr       */
+/*   Updated: 2018/12/05 19:13:40 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void			conv_d(t_pf *pf, t_conv *conv, va_list *ap)
 {
 	long long	d;
+	t_uint64	ret;
+	int			isneg;
 
 	if (conv->mod & MODIF_HH)
 		d = (signed char)va_arg(*ap, int);
@@ -24,9 +26,21 @@ void			conv_d(t_pf *pf, t_conv *conv, va_list *ap)
 		d = (long)va_arg(*ap, long);
 	else if (conv->mod & MODIF_LL)
 		d = (long long)va_arg(*ap, long long);
+	else if (conv->mod & MODIF_J)
+		d = (intmax_t)va_arg(*ap, intmax_t);
 	else
 		d = (int)va_arg(*ap, int);
-	pf->conv_buf = ft_lltoa(d);
-	generic_number_conv(pf, conv);
+	if (d < 0)
+	{
+		ret = -d;
+		isneg = 1;
+	}
+	else
+	{
+		ret = d;
+		isneg = 0;
+	}
+	pf->conv_buf = ft_ulltoa(ret);
+	generic_number_conv(pf, conv, isneg);
 	pf->convsize = ft_strlen(pf->conv_buf);
 }

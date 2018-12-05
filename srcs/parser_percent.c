@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 17:46:01 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/23 13:39:08 by schakor          ###   ########.fr       */
+/*   Updated: 2018/12/05 19:02:46 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,25 +56,38 @@ static void				parse_prec(t_pf *pf, t_conv *conv)
 
 static void				parse_mod(t_pf *pf, t_conv *conv)
 {
-	if (*pf->fmt && *(pf->fmt + 1) && *pf->fmt == 'h' && *(pf->fmt + 1) == 'h')
+	if (*pf->fmt)
 	{
-		conv->mod |= MODIF_HH;
-		(pf->fmt) += 2;
-	}
-	else if (*pf->fmt && *pf->fmt == 'h')
-	{
-		conv->mod |= MODIF_H;
-		(pf->fmt)++;
-	}
-	else if (*pf->fmt && *(pf->fmt + 1) && *pf->fmt == 'l' && *(pf->fmt + 1) == 'l')
-	{
-		conv->mod |= MODIF_LL;
-		(pf->fmt) += 2;
-	}
-	else if (*pf->fmt && *pf->fmt == 'l')
-	{
-		conv->mod |= MODIF_L;
-		(pf->fmt)++;
+		if (*pf->fmt && *(pf->fmt + 1) && *pf->fmt == 'h' && *(pf->fmt + 1) == 'h')
+		{
+			conv->mod |= MODIF_HH;
+			(pf->fmt) += 2;
+		}
+		else if (*pf->fmt && *pf->fmt == 'h')
+		{
+			conv->mod |= MODIF_H;
+			(pf->fmt)++;
+		}
+		else if (*pf->fmt && *(pf->fmt + 1) && *pf->fmt == 'l' && *(pf->fmt + 1) == 'l')
+		{
+			conv->mod |= MODIF_LL;
+			(pf->fmt) += 2;;
+		}
+		else if (*pf->fmt && *pf->fmt == 'l')
+		{
+			conv->mod |= MODIF_L;
+			pf->fmt++;
+		}
+		else if (*pf->fmt && *pf->fmt == 'j')
+		{
+			conv->mod |= MODIF_J;
+			pf->fmt++;
+		}
+		else if (*pf->fmt && *pf->fmt == 'z')
+		{
+			conv->mod |= MODIF_Z;
+			pf->fmt++;
+		}
 	}
 }
 
@@ -103,7 +116,10 @@ void					parser_percent(t_pf *pf, t_conv *conv)
 	pf->fmt++;
 	parse_flags(pf, conv);
 	parse_width(pf, conv);
+	parse_flags(pf, conv);
 	parse_prec(pf, conv);
+	parse_flags(pf, conv);
 	parse_mod(pf, conv);
+	parse_flags(pf, conv);
 	parse_conv(pf, conv);
 }

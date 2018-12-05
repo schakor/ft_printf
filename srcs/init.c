@@ -1,0 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/11/30 09:30:31 by schakor           #+#    #+#             */
+/*   Updated: 2018/12/05 18:02:58 by schakor          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+static void		init_fun_ptr(t_pf *pf)
+{
+	pf->fun_ptr[c] = &conv_c;
+	pf->fun_ptr[s] = &conv_s;
+	pf->fun_ptr[p] = &conv_p;
+	pf->fun_ptr[d] = &conv_d;
+	pf->fun_ptr[i] = &conv_i;
+	pf->fun_ptr[o] = &conv_o;
+	pf->fun_ptr[u] = &conv_u;
+	pf->fun_ptr[x] = &conv_x;
+	pf->fun_ptr[mx] = &conv_mx;
+	pf->fun_ptr[f] = &conv_f;
+	pf->fun_ptr[perc] = &conv_perc;
+}
+
+void			init_pf(t_pf *pf, const char *format)
+{
+	pf->buf = NULL;
+	pf->buf_i = 0;
+	pf->bufsztot = 0;
+	pf->conv_buf = NULL;
+	pf->convsize = 0;
+	pf->fmt = (char *)format;
+	pf->percent = (char *)format;
+	init_fun_ptr(pf);
+}
+
+void			init_conv(t_pf *pf, t_conv *conv)
+{
+	conv->flag = 0;
+	conv->width = 0;
+	conv->prec = 0;
+	conv->mod = 0;
+	conv->iszero = 0;
+	conv->i_conv = -1;
+	pf->conv_buf = NULL;
+	pf->convsize = 0;
+}

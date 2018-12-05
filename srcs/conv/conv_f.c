@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 17:50:08 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/28 14:56:56 by khsadira         ###   ########.fr       */
+/*   Updated: 2018/11/29 19:46:54 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void		conv_f(t_pf *pf, t_conv *conv, va_list *ap)
 	  (void)conv;
 	  (void)ap;*/
 	f = (double)va_arg(*ap, double);	
-	int_len = ft_dlen(f);
+	int_len = 0;//ft_dlen(f);
 	float_len = 6;
 	float_len = (conv->flag & FLAG_PREC) ? conv->prec : 6;
 	if (conv->flag & FLAG_PREC)

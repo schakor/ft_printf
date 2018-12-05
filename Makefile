@@ -6,7 +6,7 @@
 #    By: famillechakor <marvin@42.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 18:18:41 by famillech         #+#    #+#              #
-#    Updated: 2018/11/20 16:57:09 by schakor          ###   ########.fr        #
+#    Updated: 2018/12/05 19:14:39 by schakor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,12 @@ CFLAGS				=		-Wall -Wextra -Werror
 
 CPPFLAGS			=		-I includes
 
-SRC_PATH			=		./srcs/
+SRC_PATH			=		./srcs
 
-OBJ_PATH			=		./objs/
+OBJ_PATH			=		./objs
 
 SRC_FILES			=		ft_printf.c\
+							init.c\
 							buffer.c\
 							destroy_pf.c\
 							parser_percent.c\
@@ -37,7 +38,8 @@ SRC_FILES			=		ft_printf.c\
 							conv/conv_mx.c\
 							conv/conv_f.c\
 							conv/conv_perc.c\
-							conv/generic_number_conv.c
+							conv/generic_number_conv.c\
+							conv/fill_string.c\
 
 OBJ_PATH_LIBFT		=		./libft/objs/
 
@@ -57,17 +59,20 @@ OBJ_FILES_LIBFT		=		memory/ft_memset.o\
 							string/ft_strjoin.o\
 							string/ft_strcat.o\
 							conversion/ft_ulltoa_base.o\
+							conversion/ft_ulltoa.o\
 							maths/ft_ulllen_base.o\
 							string/ft_strsub.o\
-							string/ft_strfjoin.o
+							string/ft_strfjoin.o\
+							string/ft_strnewchar.o\
+							string/ft_strnew.o
 
 OBJS_LIBFT			=		$(addprefix $(OBJ_PATH_LIBFT), $(OBJ_FILES_LIBFT))
 
 OBJ_FILES			=		$(SRC_FILES:.c=.o)
 
-SRCS				=		$(addprefix $(SRC_PATH), $(SRC_FILES))
+SRCS				=		$(addprefix $(SRC_PATH)/, $(SRC_FILES))
 
-OBJS				=		$(addprefix $(OBJ_PATH), $(OBJ_FILES))
+OBJS				=		$(addprefix $(OBJ_PATH)/, $(OBJ_FILES))
 
 
 all : $(NAME)
@@ -76,7 +81,7 @@ $(NAME) : $(OBJS)
 	make -C libft
 	ar rc $@ $^ $(LIBS) $(OBJS_LIBFT)
 
-$(OBJ_PATH)%.o : $(SRC_PATH)%.c | $(OBJ_PATH)
+$(OBJ_PATH)/%.o : $(SRC_PATH)/%.c | $(OBJ_PATH)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 $(OBJ_PATH) :

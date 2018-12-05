@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 18:25:12 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/13 13:19:02 by schakor          ###   ########.fr       */
+/*   Updated: 2018/11/30 16:01:14 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void		increase_buffer(t_pf *pf)
 
 void		insert_buffer(t_pf *pf, char *ins, int size)
 {
+	if (ins == NULL || size == 0)
+		return ;
 	if (pf->buf_i + size >= pf->bufsztot)
 		increase_buffer(pf);
 	ft_memcpy(pf->buf + pf->buf_i, ins, size);
