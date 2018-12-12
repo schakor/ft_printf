@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 17:50:08 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/29 19:46:54 by schakor          ###   ########.fr       */
+/*   Updated: 2018/12/12 16:05:45 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static char		*convert_to_str(double n, int int_len, int float_len, char *tmp)
 	}
 	return (tmp);
 }
+
 static char		*from_d_to_str(double f, int int_len, int float_len, t_conv *conv)
 {
 	char		*tmp;
@@ -88,15 +89,12 @@ static char		*from_d_to_str(double f, int int_len, int float_len, t_conv *conv)
 	return (tmp);
 }
 
-void		conv_f(t_pf *pf, t_conv *conv, va_list *ap)
+void		conv_f(t_conv *conv, va_list *ap)
 {
 	double		f;
 	int			int_len;
 	int			float_len;
 
-	/*(void)pf;
-	  (void)conv;
-	  (void)ap;*/
 	f = (double)va_arg(*ap, double);	
 	int_len = 0;//ft_dlen(f);
 	float_len = 6;
@@ -104,6 +102,6 @@ void		conv_f(t_pf *pf, t_conv *conv, va_list *ap)
 	if (conv->flag & FLAG_PREC)
 		float_len = conv->prec;
 //	printf("%f\ni = %d | f = %d | conv = %d\n", f, int_len, float_len, conv->width);
-	pf->conv_buf = from_d_to_str(f, int_len, float_len, conv);
-	pf->convsize = max_value(int_len + float_len, conv->width);
+	conv->conv_buf = from_d_to_str(f, int_len, float_len, conv);
+	conv->convsize = max_value(int_len + float_len, conv->width);
 }

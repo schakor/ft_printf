@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 17:46:01 by schakor           #+#    #+#             */
-/*   Updated: 2018/12/05 19:02:46 by schakor          ###   ########.fr       */
+/*   Updated: 2018/12/12 15:44:57 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void				parse_flags(t_pf *pf, t_conv *conv)
 	}
 }
 
-static void				parse_width(t_pf *pf, t_conv *conv)
+static void				parse_width_prec(t_pf *pf, t_conv *conv)
 {
 	if (*pf->fmt && *pf->fmt >= '0' && *pf->fmt <= '9')
 	{
@@ -41,11 +41,7 @@ static void				parse_width(t_pf *pf, t_conv *conv)
 			conv->width = (conv->width * 10) + (*pf->fmt++ - '0');
 		conv->flag |= FLAG_WIDTH;
 	}
-}
-
-static void				parse_prec(t_pf *pf, t_conv *conv)
-{
-	if (*pf->fmt && *pf->fmt == '.')
+	else if (*pf->fmt && *pf->fmt == '.')
 	{
 		pf->fmt++;
 		conv->flag |= FLAG_PREC;
@@ -58,36 +54,27 @@ static void				parse_mod(t_pf *pf, t_conv *conv)
 {
 	if (*pf->fmt)
 	{
-		if (*pf->fmt && *(pf->fmt + 1) && *pf->fmt == 'h' && *(pf->fmt + 1) == 'h')
+		if (*(pf->fmt + 1) && *pf->fmt == 'h' && *(pf->fmt + 1) == 'h')
 		{
 			conv->mod |= MODIF_HH;
-			(pf->fmt) += 2;
+			pf->fmt++;
 		}
-		else if (*pf->fmt && *pf->fmt == 'h')
-		{
+		else if (*pf->fmt == 'h')
 			conv->mod |= MODIF_H;
-			(pf->fmt)++;
-		}
-		else if (*pf->fmt && *(pf->fmt + 1) && *pf->fmt == 'l' && *(pf->fmt + 1) == 'l')
+		else if (*(pf->fmt + 1) && *pf->fmt == 'l' && *(pf->fmt + 1) == 'l')
 		{
 			conv->mod |= MODIF_LL;
-			(pf->fmt) += 2;;
+			pf->fmt++;
 		}
-		else if (*pf->fmt && *pf->fmt == 'l')
-		{
+		else if (*pf->fmt == 'l')
 			conv->mod |= MODIF_L;
-			pf->fmt++;
-		}
-		else if (*pf->fmt && *pf->fmt == 'j')
-		{
+		else if (*pf->fmt == 'j')
 			conv->mod |= MODIF_J;
-			pf->fmt++;
-		}
-		else if (*pf->fmt && *pf->fmt == 'z')
-		{
+		else if (*pf->fmt == 'z')
 			conv->mod |= MODIF_Z;
-			pf->fmt++;
-		}
+		else
+			return ;
+		pf->fmt++;
 	}
 }
 
@@ -103,7 +90,7 @@ static void				parse_conv(t_pf *pf, t_conv *conv)
 		{
 			if (i >= 3 && i <= 8 && (conv->flag & FLAG_PREC))
 				conv->flag &= ~FLAG_ZERO;
-			conv->i_conv = i;
+			conv->index_conv = i;
 			(pf->fmt)++;
 			return ;
 		}
@@ -115,9 +102,9 @@ void					parser_percent(t_pf *pf, t_conv *conv)
 {
 	pf->fmt++;
 	parse_flags(pf, conv);
-	parse_width(pf, conv);
+	parse_width_prec(pf, conv);
 	parse_flags(pf, conv);
-	parse_prec(pf, conv);
+	parse_width_prec(pf, conv);
 	parse_flags(pf, conv);
 	parse_mod(pf, conv);
 	parse_flags(pf, conv);

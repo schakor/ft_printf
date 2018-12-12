@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 12:20:32 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/20 16:49:35 by khsadira         ###   ########.fr       */
+/*   Updated: 2018/12/12 16:03:32 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,13 @@ static int	max_value(int a, int b)
 		return (b);
 }
 
-void		conv_p(t_pf *pf, t_conv *conv, va_list *ap)
+void		conv_p(t_conv *conv, va_list *ap)
 {
-	(void)pf;
-	(void)conv;
-	(void)ap;
 	int		i;
 	char	*tmp;
 	char	*s;
 	void	*pointer;
 
-	
 	pointer = (void *)va_arg(*ap, void *);
 	s = ft_strdup("0x");
 	s = ft_strfjoin(s, ft_ulltoa_base((unsigned long long)pointer, 16, 0), 0);
@@ -52,6 +48,6 @@ void		conv_p(t_pf *pf, t_conv *conv, va_list *ap)
 		tmp = ft_strdup(s);
 	if (s)
 		ft_strdel(&s);
-	pf->conv_buf = tmp;
-	pf->convsize += i;
+	conv->conv_buf = tmp;
+	conv->convsize += i;
 }

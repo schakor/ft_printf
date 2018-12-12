@@ -6,13 +6,13 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 17:49:29 by schakor           #+#    #+#             */
-/*   Updated: 2018/12/05 18:51:48 by schakor          ###   ########.fr       */
+/*   Updated: 2018/12/12 16:05:26 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void						conv_mx(t_pf *pf, t_conv *conv, va_list *ap)
+void						conv_mx(t_conv *conv, va_list *ap)
 {
 	unsigned long long		d;
 
@@ -26,11 +26,13 @@ void						conv_mx(t_pf *pf, t_conv *conv, va_list *ap)
 		d = (unsigned long long)va_arg(*ap, unsigned long long);
 	else if (conv->mod & MODIF_J)
 		d = (uintmax_t)va_arg(*ap, uintmax_t);
+	else if (conv->mod & MODIF_Z)
+		d = (size_t)va_arg(*ap, size_t);
 	else
 		d = (unsigned int)va_arg(*ap, unsigned int);
 	if (d == 0)
 		conv->iszero = 0;
-	pf->conv_buf = ft_ulltoa_base(d, 16, 1);
-	generic_number_conv(pf, conv, 0);
-	pf->convsize = ft_strlen(pf->conv_buf);
+	conv->conv_buf = ft_ulltoa_base(d, 16, 1);
+	generic_number_conv(conv, 0);
+	conv->convsize = ft_strlen(conv->conv_buf);
 }

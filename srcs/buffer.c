@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 18:25:12 by schakor           #+#    #+#             */
-/*   Updated: 2018/11/30 16:01:14 by schakor          ###   ########.fr       */
+/*   Updated: 2018/12/12 15:44:22 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,25 @@ void		increase_buffer(t_pf *pf)
 {
 	char	*ret;
 
-	if (!(ret = (char *)malloc(sizeof(*ret) * (pf->bufsztot + BUFFSIZE))))
+	if (!(ret = (char *)malloc(sizeof(*ret) * (pf->bufalloc + BUFFSIZE))))
 	{
 		destroy_pf(pf);
 		exit(EXIT_FAILURE);
 	}
-	ft_memset(ret, '\0', pf->bufsztot + BUFFSIZE);
+	ft_memset(ret, '\0', pf->bufalloc + BUFFSIZE);
 	if (pf->buf)
-		ft_memcpy(ret, pf->buf, pf->buf_i);
+		ft_memcpy(ret, pf->buf, pf->bufsize);
 	ft_strdel(&(pf->buf));
 	pf->buf = ret;
-	pf->bufsztot += BUFFSIZE;
+	pf->bufalloc += BUFFSIZE;
 }
 
 void		insert_buffer(t_pf *pf, char *ins, int size)
 {
 	if (ins == NULL || size == 0)
 		return ;
-	if (pf->buf_i + size >= pf->bufsztot)
+	if (pf->bufsize + size >= pf->bufalloc)
 		increase_buffer(pf);
-	ft_memcpy(pf->buf + pf->buf_i, ins, size);
-	pf->buf_i += size;
+	ft_memcpy(pf->buf + pf->bufsize, ins, size);
+	pf->bufsize += size;
 }

@@ -6,7 +6,7 @@
 #    By: famillechakor <marvin@42.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/25 18:18:41 by famillech         #+#    #+#              #
-#    Updated: 2018/12/05 19:14:39 by schakor          ###   ########.fr        #
+#    Updated: 2018/12/10 16:09:55 by schakor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ OBJ_PATH			=		./objs
 
 SRC_FILES			=		ft_printf.c\
 							init.c\
+							main_loop.c\
 							buffer.c\
 							destroy_pf.c\
 							parser_percent.c\
@@ -64,7 +65,9 @@ OBJ_FILES_LIBFT		=		memory/ft_memset.o\
 							string/ft_strsub.o\
 							string/ft_strfjoin.o\
 							string/ft_strnewchar.o\
-							string/ft_strnew.o
+							string/ft_strnew.o\
+							conversion/ft_atoi.o\
+							maths/ft_ulllen.o\
 
 OBJS_LIBFT			=		$(addprefix $(OBJ_PATH_LIBFT), $(OBJ_FILES_LIBFT))
 

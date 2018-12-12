@@ -6,7 +6,7 @@
 /*   By: schakor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 09:30:31 by schakor           #+#    #+#             */
-/*   Updated: 2018/12/05 18:02:58 by schakor          ###   ########.fr       */
+/*   Updated: 2018/12/12 16:10:44 by schakor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,21 @@ static void		init_fun_ptr(t_pf *pf)
 void			init_pf(t_pf *pf, const char *format)
 {
 	pf->buf = NULL;
-	pf->buf_i = 0;
-	pf->bufsztot = 0;
-	pf->conv_buf = NULL;
-	pf->convsize = 0;
+	pf->bufsize = 0;
+	pf->bufalloc = 0;
 	pf->fmt = (char *)format;
 	pf->percent = (char *)format;
 	init_fun_ptr(pf);
 }
 
-void			init_conv(t_pf *pf, t_conv *conv)
+void			init_conv(t_conv *conv)
 {
 	conv->flag = 0;
 	conv->width = 0;
 	conv->prec = 0;
 	conv->mod = 0;
 	conv->iszero = 0;
-	conv->i_conv = -1;
-	pf->conv_buf = NULL;
-	pf->convsize = 0;
+	conv->index_conv = -1;
+	conv->conv_buf = NULL;
+	conv->convsize = 0;
 }
